@@ -1,0 +1,280 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f4f4;
+}
+
+/* TOP BAR */
+#topBar {
+    background: purple;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* MAIN AREA */
+#container {
+    display: flex;
+    height: calc(100vh - 120px);
+    background: #e7d7ff;
+    gap: 10px;          /* space between panels */
+    padding: 5px;      /* space on left & right edges */
+    box-sizing: border-box;
+}
+
+/* .panel {
+    flex: 1;
+    background: white;
+    border-right: 2px solid #999;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* align-items: flex-start;
+    position: relative;
+} */ 
+
+.panel {
+    flex: 1;
+    background: white;
+    border-right: 2px solid #999;
+
+    display: flex;
+    flex-direction: column;      /* stack vertically */
+
+    align-items: center;         /* center horizontally (h2 + graph) */
+    justify-content: flex-start; /* keep everything at the top */
+
+    padding-top: 10px;           /* small spacing from top */
+    border-radius: 12px;     /* rounded corners */
+    border: none;            /* remove old border */
+}
+
+
+.panel:last-child {
+    border-right: none;
+}
+
+/* BOTTOM BAR */
+#bottomBar {
+    display: flex;
+    background: purple;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+/* DFS & BFS BUTTON GROUPS */
+.bottomButtons {
+    display: flex;
+    gap: 15px;
+}
+
+/* BUTTONS */
+button {
+    background: turquoise;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: yellow;
+}
+
+/* GRAPH ELEMENTS */
+.node {
+    fill: white;
+    stroke: black;
+    stroke-width: 2;
+    transition: fill 0.4s;
+}
+.node.active { fill: yellow; }
+.node.visited { 
+    fill:#90D5FF; 
+}
+
+.edge {
+    stroke: red;
+    stroke-width: 3;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* .panel h2 h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;   /* ensures text is centered */
+/* } */ 
+
+.panel h2,
+.panel h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;          /* ensures proper centering */
+}
+
+#bfsState {
+    display: none;
+}
+
+#dfsState {
+    display: none;
+}
+
+#stackDisplay {
+    display: flex;
+    flex-direction: column-reverse; /* TOP of stack at bottom (realistic) */
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.stackItem {
+    background: yellow;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#queueDisplay {
+    display: flex;
+    flex-direction: row;      /* horizontal */
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.queueItem {
+    background: lightgreen;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 6px 10px;
+    min-width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* FRONT of queue */
+.queueItem:first-child {
+    background: yellow;
+}
+
+.queueItem {
+    background: lightgreen;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 6px 10px;
+    min-width: 40px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Enqueue animation */
+.queueItem.adding {
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+/* Dequeue animation */
+.queueItem.removing {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+/* Front highlight */
+.queueItem:first-child {
+    background: yellow;
+}
+
+#bfsState {
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+
+/* #queueDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   /* CENTER horizontally */
+    /* align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+} */ */
+
+#queueDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.queueItem {
+    transition: all 0.3s ease;
+}
+
+.queueItem.dequeued {
+    background: #d3d3d3;
+    opacity: 0.5;
+}
+
+
+.queueItem:first-child {
+    background: yellow;
+}
+
+.node.inQueue {
+    fill: lightgreen;
+}
+
+
+/* .node.active {
+    fill: yellow;
+}
+
+.node.visited {
+    fill: steelblue;
+} */
+
+
+/* .node.dequeued {
+    fill: #FFDAB9;   /* peach */
+    /* stroke: black;  */
+
+
+
+.centerSummary {
+    text-align: center;
+    /* font-weight: bold; */
+    font-size: 1.1em;
+}
+
+
+/* BFS: node currently being dequeued */
+.node.dequeued {
+    fill: #FFDAB9;       /* peach */
+    stroke: black;     /* optional darker outline */
+}
+
+
+/* BFS: node at front of queue (next to be dequeued) */
+.node.queue-head {
+    fill: yellow;
+    stroke: black; /* optional */
+}
+
+
