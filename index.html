@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>DFS & BFS Visualiser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topBar">
+    <h1>Graph Traversal Visualiser</h1>
+    <button id="closeBtn">Close</button>
+</div>
+
+<!-- MAIN PANELS -->
+<div id="container">
+
+    <!-- DFS PANEL -->
+    
+    <div class="panel" id="dfsPanel">
+
+          <h2>Depth First Search</h2>
+          <h4>Uses a stack (or recursion) to go deep before backtracking</h4><br>
+        
+        <svg id="dfsGraph" width="300" height="350">
+            <line id="dfs-A-B" x1="150" y1="40" x2="70" y2="120" class="edge"/>
+            <line id="dfs-B-D" x1="70" y1="120" x2="40" y2="220" class="edge"/>
+            <line id="dfs-B-E" x1="70" y1="120" x2="120" y2="220" class="edge"/>
+            <line id="dfs-A-C" x1="150" y1="40" x2="230" y2="120" class="edge"/>
+            <line id="dfs-C-F" x1="230" y1="120" x2="230" y2="220" class="edge"/>
+
+            <circle id="dfs-A" cx="150" cy="40" r="18" class="node"/><text x="145" y="45">A</text>
+            <circle id="dfs-B" cx="70"  cy="120" r="18" class="node"/><text x="65"  y="125">B</text>
+            <circle id="dfs-C" cx="230" cy="120" r="18" class="node"/><text x="225" y="125">C</text>
+            <circle id="dfs-D" cx="40"  cy="220" r="18" class="node"/><text x="35"  y="225">D</text>
+            <circle id="dfs-E" cx="120" cy="220" r="18" class="node"/><text x="115" y="225">E</text>
+            <circle id="dfs-F" cx="230" cy="220" r="18" class="node"/><text x="225" y="225">F</text>
+        </svg>
+    </div>
+
+    <!-- MIDDLE PANEL -->
+    <div class="panel">
+        <h3>Explanation</h3>
+        <!-- <div id="explainText">Press a button to begin.</div> -->
+
+        <div id="explainText"></div>
+
+        <div id="dfsState">
+            <!-- <p><strong>Stack:</strong> <span id="stackDisplay">[]</span></p>
+            <div id="stackDisplay"></div> -->
+            <p><strong>Stack:</strong></p>
+            <div id="stackDisplay"></div>
+        </div>
+
+
+    <div id="bfsState" style="display:none;">
+
+    <!-- Queue -->
+    <div id="queueContainer" style="display:none;">
+        <p><strong>Queue:</strong></p>
+        <div id="queueDisplay"></div>
+    </div>
+
+    <!-- Visited -->
+    <div id="visitedContainer" style="display:none;">
+        <p><strong>Visited:</strong> <span id="visitedDisplay"></span></p>
+    </div>
+
+</div>
+
+        
+    </div>
+
+    <!-- BFS PANEL -->
+    <div class="panel" id="bfsPanel">
+        <h2>Breadth First Search</h2>
+        <h4>Uses a queue to explore level by level</h4><br><br>
+        <svg id="bfsGraph" width="300" height="350">
+
+            <line id="bfs-A-B" x1="150" y1="40" x2="70" y2="120" class="edge"/>
+            <line id="bfs-B-D" x1="70" y1="120" x2="40" y2="220" class="edge"/>
+            <line id="bfs-B-E" x1="70" y1="120" x2="120" y2="220" class="edge"/>
+            <line id="bfs-A-C" x1="150" y1="40" x2="230" y2="120" class="edge"/>
+            <line id="bfs-C-F" x1="230" y1="120" x2="230" y2="220" class="edge"/>
+
+            <circle id="bfs-A" cx="150" cy="40" r="18" class="node"/><text x="145" y="45">A</text>
+            <circle id="bfs-B" cx="70" cy="120" r="18" class="node"/><text x="65" y="125">B</text>
+            <circle id="bfs-C" cx="230" cy="120" r="18" class="node"/><text x="225" y="125">C</text>
+            <circle id="bfs-D" cx="40" cy="220" r="18" class="node"/><text x="35" y="225">D</text>
+            <circle id="bfs-E" cx="120" cy="220" r="18" class="node"/><text x="115" y="225">E</text>
+            <circle id="bfs-F" cx="230" cy="220" r="18" class="node"/><text x="225" y="225">F</text>
+        </svg>
+    </div>
+
+</div>
+
+<!-- BOTTOM BAR -->
+<div id="bottomBar">
+
+    <!-- Left buttons = DFS -->
+    <div class="bottomButtons" id="leftButtons">
+        <button id="playDFS">Play DFS</button>
+        <button id="stepDFS">Step DFS</button>
+        <button id="resetDFS">Reset DFS</button>
+    </div>
+
+    <div></div> <!-- spacer under explanation panel -->
+
+    <!-- Right buttons = BFS -->
+    <div class="bottomButtons" id="rightButtons">
+        <button id="playBFS">Play BFS</button>
+        <button id="stepBFS">Step BFS</button>
+        <button id="resetBFS">Reset BFS</button>
+    </div>
+
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
